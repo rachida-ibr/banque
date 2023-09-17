@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org" 
+	xmlns:layout ="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}">
+</head>
+<header>
+		<div class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav">
+					<li><a th:href="@{/operation}">Operation</a></li>
+					<li><a th:href="@{/formProduit}">Ajouter produit</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+<body>
+
+<br>
+<br>
+<div >
+	<div class="col-md-6">
+		<div class="panel panel-primary">
+			<div class="panel-heading">consulter un compte</div>
+			<div class="panel-body">
+			<form th:action="@{/consulterCompte}" method="get">
+				<label>Mot Cle</label>
+				<input type="text" name="mc">
+				<button type="submit" class="btn btn-primary">chercher</button>
+			</form>
+				
+			</div>
+		</div>
+		<div class="panel panel-primary" th:if="${compte}">
+			<div class="panel-heading">Information sur le compte</div>
+			<div class="panel-body">
+				<div>
+					<label>code:</label>
+					<label th:text="${compte.codeCpt}"></label>
+				</div>
+				<div>
+					<label>date de creatio:</label>
+					<label th:text="${compte.dateCreation}"></label>
+				</div>
+				<div>
+					<label>solde:</label>
+					<label th:text="${compte.solde}"></label>
+				</div>
+			
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6" >
+		<div class="panel-primary" th:if="${compte}">
+			<div class="panel-heading">operation d'un compte</div>
+			<div class="panel-body"></div>
+		</div>
+		<div class="panel panel-primary" th:if="${compte}" >
+			<div class="panel-heading">Liste des operation d'un compte</div>
+			<div class="panel-body"></div>
+		</div>
+	</div>
+</div>
+	
+</body>
+</html>
